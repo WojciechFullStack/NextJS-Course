@@ -20,11 +20,20 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
-        {children}
-      </body>
-    </html>
+    <body>
+        <header style={{ padding: '20px', backgroundColor: '#f0f0f0' }}>
+            <nav>
+                <a href="/" style={{ marginRight: '15px' }}>Home</a>
+                <a href="/about">About</a>
+            </nav>
+        </header>
+        <main style={{ padding: '20px' }}>
+            {children}
+        </main>
+        <footer style={{ padding: '10px', textAlign: 'center', backgroundColor: '#f0f0f0' }}>
+            Simple Footer Text
+        </footer>
+    </body>
+</html>
   );
 }
