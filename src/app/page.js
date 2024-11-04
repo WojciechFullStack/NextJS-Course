@@ -1,18 +1,31 @@
 'use client'
-import CustomParagraph from '../components/CustomParagraph';
-import { writeToDB } from '@/actions/serverDB';
+
+// app/page.js (lub inna strona w Next.js)
+import { useState } from 'react';
+import { writeDB } from '@/actions/serverDB';
 
 export default function Home() {
-  // Możesz tutaj dodać wywołanie akcji serwerowej.
-  async function handleLog() {
-    await writeToDB("This is a server-side log from the Home page");
+  const [inputValue, setInputValue] = useState('');
+
+  async function handleSubmit(event) {
+    event.preventDefault();
+    await writeDB(inputValue);
+    setInputValue(''); // Czyszczenie pola wejściowego po wysłaniu
   }
 
   return (
     <div>
       <h1>Home Page</h1>
-      <CustomParagraph text="This is a custom paragraph for the Home Page." />
-      <button onClick={handleLog}>Log to Server</button>
+      <form onSubmit={handleSubmit}>
+        <input
+          type="text"
+          value={inputValue}
+          onChange={(e) => setInputValue(e.target.value)}
+          placeholder="Wpisz coś..."
+          required
+        />
+        <button type="submit">Wyślij</button>
+      </form>
     </div>
   );
 }
