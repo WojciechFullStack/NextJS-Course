@@ -1,21 +1,3 @@
-// app/api/register/route.js
-// user server
-
-export async function POST(request) {
-  const { username, email, password } = await request.json();
-
-  // Walidacja prostych warunków - można dostosować
-  if (!username || !email || !password) {
-    return new Response(JSON.stringify({ error: "All fields are required." }), { status: 400 });
-  }
-
-  // Jeśli dane są poprawne, zwracamy sukces (można zastąpić logiką rejestracji użytkownika)
-  return new Response(JSON.stringify({ message: "Registration successful!" }), { status: 200 });
-}
-
-
-// app/register/page.js
-
 'use client'
 import { useActionState } from "react";
 import { useState } from "react";
