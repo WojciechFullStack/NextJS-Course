@@ -11,6 +11,7 @@ export default function RegisterForm() {
 
   const handleSubmit = async (currentState, formData) => {
     console.log(formState)
+    console.log(formData)
  //   event.preventDefault();
 
     // Wywołujemy Server Action
