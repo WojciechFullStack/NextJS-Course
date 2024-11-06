@@ -7,6 +7,8 @@ import { writeDB } from '@/actions/serverDB';
 export default function Home() {
   const [inputValue, setInputValue] = useState('');
 
+
+  
   async function handleSubmit(event) {
     event.preventDefault();
     await writeDB(inputValue);
